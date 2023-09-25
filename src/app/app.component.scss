@@ -1,0 +1,18 @@
+.user-initials-container {
+  background-color: var(--ion-color-light-grey);
+  width: 65px;
+  height: 60px;
+  color: black;
+  border-radius: 50%;
+  border: 3px solid var(--ion-color-dark-grey-icon);
+  text-transform: uppercase;
+}
+
+.logomenu {  
+  padding: 5px;
+}
+
+.header {
+  --background: rgb(53,132,228);
+  --background: linear-gradient(120deg, rgba(53,132,228,1) 0%, rgba(136,182,239,1) 52%, rgba(255,255,255,1) 100%);
+}

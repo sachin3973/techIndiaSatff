@@ -1,0 +1,42 @@
+.select-card {
+  background-color: white;
+  box-shadow: 1px 2px 5px 2px rgba(216, 216, 216, 0.728);
+  border-radius: 5px;
+  margin: 2rem 1.5rem;
+  padding: 1rem;
+}
+
+.selection-heading-area {
+  background-color: var(--ion-color-lightest-grey);
+  border-radius: 5px;
+  padding: 0.5rem 1rem;
+  margin: 0.5rem;
+}
+
+.selection-option {
+  padding: 0px 1rem;
+}
+
+.selected-option {
+  background-color: var(--ion-color-light-grey);
+}
+
+.other-option {
+  background-color: white;
+}
+
+.inner-selection-option-wrapper {
+  padding: 0.5rem 0.3rem;
+}
+
+.border-bottom {
+  border-bottom: 1px solid var(--ion-color-light-grey);
+}
+
+.completed {
+  color:black;
+}
+
+.pending {
+  color: grey;
+}

@@ -1,0 +1,7 @@
+{
+  "name": "techindiastaff",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

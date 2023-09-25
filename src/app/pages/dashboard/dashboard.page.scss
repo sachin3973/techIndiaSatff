@@ -1,0 +1,34 @@
+.menu {
+  --background: var(--ion-color-primary)
+}
+
+.logo {
+  height: 2.5rem;
+}
+
+ion-header {
+  --border: none !important;
+  --background: white;
+}
+
+.card {
+  background-color: var(--ion-color-white);
+  height: 10.8vh;
+  margin-top: 1rem;
+  box-shadow: 1px 2px 5px 2px rgba(216, 216, 216, 0.728);
+  border-radius: 5px;
+  cursor: pointer;
+  overflow: hidden; 
+  position: relative;
+}
+
+.activity-wrapper {
+  margin-top: 2rem;
+  color: var(--ion-color-black-text-heading);
+  margin: 1rem 2rem;
+}
+
+.marker-icon {
+  margin-top: 0.9rem
+}
+ 

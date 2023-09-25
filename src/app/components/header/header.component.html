@@ -1,0 +1,51 @@
+<ion-header mode="md" class="ion-no-border header" color="white">
+  <ion-toolbar class="ion-padding-vertical">
+
+    <!-- Activity Detail Header -->
+    <ion-buttons slot="start" *ngIf="goBackToDashboard">
+      <ion-icon id="present-alert" class="back-icon" name="arrow-back-outline"></ion-icon>
+      <ion-title class="text-capitalize Mediumbold">Mr.{{title}}</ion-title>
+    </ion-buttons>
+
+    <!-- Select Switchboard Header -->
+    <ion-buttons slot="start" *ngIf="goBackToActivity">
+      <ion-icon (click)="goToActvity()" class="back-icon" name="arrow-back-outline"></ion-icon>
+      <ion-row class="ion-margin-start">
+        <ion-col size="12" style="padding: 0;">
+          <ion-label class="text-capitalize Mediumbold" color="dark">{{title}}</ion-label>
+        </ion-col>
+        <ion-col size="12" style="padding: 0;">
+          <ion-label class="VSmallBold" color="dark">Location</ion-label>
+        </ion-col>
+      </ion-row>
+    </ion-buttons>
+
+    <!-- Product List Header -->
+    <ion-buttons slot="start" *ngIf="goBackToSelectSwitchboard">
+      <ion-icon (click)="goToSelectSwitchboard()" class="back-icon" name="arrow-back-outline"></ion-icon>
+      <ion-row class="ion-margin-start">
+        <ion-col size="12" style="padding: 0;">
+          <ion-label class="text-capitalize Mediumbold" color="dark">{{title}}</ion-label>
+        </ion-col>
+        <ion-col size="12" style="padding: 0;">
+          <ion-label class="VSmallBold" color="dark">Location</ion-label>
+        </ion-col>
+      </ion-row>
+    </ion-buttons>
+
+    <ion-item slot="end">
+      <img class="logo" src="../../../assets/RESOURCES/LOGO.png" alt="logo">
+    </ion-item>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-alert
+  mode="ios"
+  trigger="present-alert"
+  header="Exit"
+  class="custom-alert"
+  message="Are you sure you want to exit activity?"
+  [buttons]="alertButtons"
+  (didDismiss)="setResult($event)"
+></ion-alert>

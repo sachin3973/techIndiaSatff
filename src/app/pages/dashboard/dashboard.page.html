@@ -1,0 +1,58 @@
+<ion-header mode="md" class="ion-no-border" color="white">
+  <ion-toolbar class="ion-padding-vertical">
+    <ion-buttons slot="start">  
+      <ion-menu-button class="menu" color="light"></ion-menu-button>
+      <ion-title class="text-capitalize Mediumbold">Mr.{{staffName}}</ion-title>
+    </ion-buttons>
+    <ion-item slot="end">
+      <img class="logo" src="../../../assets/RESOURCES/LOGO.png" alt="logo">
+    </ion-item>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="activity-wrapper">
+    
+    <!-- Heading -->
+    <ion-label class="LargeBold">Your Ongoing Activites</ion-label>
+    <ion-row (click)="goToActivityDetails(activity)" class="ion-justify-content-center card ion-activatable" *ngFor="let activity of activities">
+      <ion-ripple-effect type="unbound" class="custom-ripple"></ion-ripple-effect>
+      <ion-col size="12">
+        <ion-row>
+          <ion-col size="1">
+            <img class="marker-icon" src="../../../assets/RESOURCES/LOCATION.png" alt="marker">
+          </ion-col>
+          <ion-col size="11" style="padding: 0px;">
+            <ion-row class="ion-align-items-center">
+              <ion-col size="9">
+                <ion-row size="12">
+                  <ion-label class="VVSmallNormal">Location</ion-label>
+                </ion-row>
+                <ion-row size="12">
+                  <ion-label class="SmallBold">{{activity.locationName}}</ion-label>
+                </ion-row>
+              </ion-col>
+              <ion-col size="3">
+                <circle-progress
+                  [percent]="activity.progress"
+                  [radius]="100"
+                  [outerStrokeWidth]="10"
+                  [responsive]="true"
+                  [innerStrokeWidth]="10"
+                  [outerStrokeColor]="'var(--ion-color-green)'"
+                  [innerStrokeColor]="'var(--ion-color-light-grey)'"
+                  [animation]="true"
+                  [animationDuration]="300"
+                  [titleFontSize]="'60'"
+                  [showSubtitle]="false"
+                  [titleFormat]="progressBarTitleFormat"
+                ></circle-progress>
+              </ion-col>
+            </ion-row>
+          </ion-col>
+        </ion-row>
+      </ion-col>
+      <ion-col size="12"></ion-col>
+    </ion-row>
+  </div>
+</ion-content>

@@ -1,0 +1,46 @@
+<ion-header class="ion-no-border">
+  <app-header [goBackToActivity]="true"></app-header>
+</ion-header>
+
+<ion-content>
+  <!-- Functional Area -->
+  <div class="select-card">
+    <ion-row (click)="selectFunctionalArea()" class="selection-heading-area ion-justify-content-between ion-align-items-center ion-activatable">
+      <ion-ripple-effect type="unbound" class="custom-ripple"></ion-ripple-effect>
+      <ion-label class="SmallBold" color="black-heading-text">{{selectedFunctionArea && selectedFunctionArea.name ? selectedFunctionArea.name : 'Functional Area'}}</ion-label>
+      <ion-icon *ngIf="isFunctionalAreaOpen" color="primary" name="caret-down-circle" size="large"></ion-icon>
+      <ion-icon *ngIf="!isFunctionalAreaOpen" color="primary" name="caret-up-circle" size="large"></ion-icon>
+    </ion-row>
+
+    <div *ngIf="isFunctionalAreaOpen">
+      <div (click)="onSelectFunctionalArea(functionArea)" *ngFor="let functionArea of selectedActivity.functionalAreas; let index=index;" class="selection-option" [ngClass]="{'selected-option' : selectedFunctionArea && functionArea.id === selectedFunctionArea.id}">
+        <ion-row class="ion-align-items-center ion-justify-content-between ion-activatable inner-selection-option-wrapper" [ngClass]="{ 'border-bottom' : (selectedActivity.functionalAreas.length - 2) >= index}">
+          <ion-ripple-effect type="unbound" class="custom-ripple"></ion-ripple-effect>
+          <ion-label class="SmallBold" [ngClass]="{ 'completed' : functionArea.inProgress, 'pending' : !functionArea.inProgress }" color="black-heading-text">{{functionArea.name}}</ion-label>
+          <ion-label *ngIf="functionArea.inProgress" class="pending-chip VVSmallNormal ion-text-center">Pending</ion-label>
+          <ion-label *ngIf="!functionArea.inProgress" class="completed-chip VVSmallNormal ion-text-center">Completed</ion-label>
+        </ion-row>
+      </div>
+    </div>
+  </div>
+
+  <!-- Switchboard -->
+  <div class="select-card" *ngIf="selectedFunctionArea && selectedFunctionArea.switchboards.length > 0">
+    <ion-row (click)="selectSwitchBoardArea()" class="selection-heading-area ion-justify-content-between ion-align-items-center ion-activatable">
+      <ion-ripple-effect type="unbound" class="custom-ripple"></ion-ripple-effect>
+      <ion-label class="SmallBold" color="black-heading-text">{{selectedSwitchBoard && selectedSwitchBoard.name ? selectedSwitchBoard.name : 'Switchboard'}}</ion-label>
+      <ion-icon *ngIf="isSwitchboardAreaOpen" color="primary" name="caret-down-circle" size="large"></ion-icon>
+      <ion-icon *ngIf="!isSwitchboardAreaOpen" color="primary" name="caret-up-circle" size="large"></ion-icon>
+    </ion-row>
+
+    <div *ngIf="isSwitchboardAreaOpen">
+      <div (click)="onSelectSwitchBoard(switchboard)" [ngClass]="{ 'completed' : switchboard.progress == 100, 'pending' : switchboard.progress < 100, 'selected-option' : selectedSwitchBoard && switchboard.id === selectedSwitchBoard.id }" *ngFor="let switchboard of selectedFunctionArea.switchboards; let index=index;" class="selection-option">
+        <ion-row class="ion-align-items-center ion-justify-content-between ion-activatable inner-selection-option-wrapper" [ngClass]="{ 'border-bottom' : (selectedFunctionArea.switchboards.length - 2) >= index}">
+          <ion-ripple-effect type="unbound" class="custom-ripple"></ion-ripple-effect>
+          <ion-label class="SmallBold" color="black-heading-text">{{switchboard.name}}</ion-label>
+          <ion-label class="VSmallNormal ion-text-center">{{switchboard.progress}}%</ion-label>
+        </ion-row>
+      </div>
+    </div>
+  </div>
+</ion-content>

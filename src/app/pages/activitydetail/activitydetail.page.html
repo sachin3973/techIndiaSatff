@@ -1,0 +1,103 @@
+<ion-header class="ion-no-border">
+  <app-header [goBackToDashboard]="true"></app-header>
+  <div class="sync-now ion-activatable" (click)="syncNow()">
+    <ion-ripple-effect type="bounded" class="custom-ripple"></ion-ripple-effect>
+    <ion-row class="ion-align-items-center">
+      <ion-icon color="primary" name="sync-circle"></ion-icon>
+      <ion-label class="VSmallBold">Sync Now</ion-label>
+    </ion-row>
+  </div>
+</ion-header>
+
+<ion-content>
+  <div class="activity-detail-wrapper">
+    
+    <!-- Heading -->
+    <ion-label class="LargeBold">Activity in Progress</ion-label>
+    <div class="activity-detail-card ion-margin-top">
+      <ion-row class="ion-justify-content-between ion-align-items-center ion-padding">
+        <ion-label class="Mediumbold" color="back-text-heading">Thermography</ion-label>
+        <ion-label class="chip inprocess-chip">In Process</ion-label>
+      </ion-row>
+
+      <!-- Upper Card Body -->
+      <ion-row class="ion-justify-content-between ion-align-items-center activity-detail-upper-card-body">
+        <ion-col size="2" class="ion-padding-start">
+          <img class="ion-margin-end instrument-icon" src="../../../assets/RESOURCES/INSTRUMENT.png" alt="instrument">
+        </ion-col>
+        <ion-col size="10" class="ion-padding-end">
+          <ion-row class="ion-align-items-center ion-justify-content-between">
+            <div>
+              <ion-label class="VVSmallNormal">Instrument</ion-label>
+              <br>
+              <ion-label class="SmallBold">Thermal Imager</ion-label>
+            </div>
+            <div class="ion-text-end">
+              <ion-label class="VVSmallNormal">Modal</ion-label>
+              <br>
+              <ion-label class="VSmallBold">Testo-82</ion-label>
+            </div>
+          </ion-row>
+        </ion-col>
+      </ion-row>
+
+      <!-- Middle Card Body -->
+      <ion-row class="activity-detail-middle-body">
+        <ion-col size="1">
+          <img class="marker-icon" src="../../../assets/RESOURCES/LOCATION.png" alt="marker">
+        </ion-col>
+        <ion-col size="11">
+          <ion-row class="ion-justify-content-between">
+            <ion-col size="6">
+              <ion-label class="VVSmallNormal">Location</ion-label>
+              <br>
+              <ion-label class="SmallBold">{{activity.locationName}}</ion-label>
+            </ion-col>
+            <ion-col size="6" class="ion-text-end">
+              <ion-label class="VVSmallNormal">Date</ion-label>
+              <br>
+              <ion-label class="VSmallBold">{{activity.date | date: 'mediumDate'}}</ion-label>
+            </ion-col>
+          </ion-row>
+        </ion-col>
+      </ion-row>
+
+      <!-- Lower Card Body -->
+      <ion-row class="activity-detail-lower-body">
+        <ion-col size="1">
+          <img class="equipment" src="../../../assets/RESOURCES/EQUIPMENT.png" alt="equipment">
+        </ion-col>
+        <ion-col size="11">
+          <ion-label class="SmallNormal">Functional Areas</ion-label>
+        </ion-col>
+        <ion-col size="12">
+          <div class="ion-padding-horizontal ion-activatable" *ngFor="let eachArea of activity.functionalAreas; let index = index;">
+            <ion-ripple-effect type="bounded" class="custom-ripple"></ion-ripple-effect>
+            <ion-row class="ion-justify-content-between">
+              <ion-col size="10">
+                <ion-label class="SmallBold" [ngClass]="{ 'completed' : eachArea.inProgress, 'inprogress' : !eachArea.inProgress }">
+                  {{index + 1}}. {{eachArea.name}}
+                </ion-label>
+              </ion-col>
+              <ion-col *ngIf="!eachArea.inProgress" size="2" class="ion-padding-start">
+                <img src="../../../assets/RESOURCES/COMLETE.png" alt="completed">
+              </ion-col>
+            </ion-row>
+          </div>
+        </ion-col>
+        <ion-col size="12">
+          <ion-row class="ion-justify-content-center">
+            <ion-button (click)="record()" class="primary-button ion-text-uppercase VSmallBold" shape="round">Record</ion-button>
+          </ion-row>
+        </ion-col>
+        <ion-col size="12" class="ion-margin-top">
+          <ion-row class="ion-justify-content-center ion-align-items-center view-report-wrapper">
+            <img src="../../../assets/RESOURCES/REPORT.png" alt="report icon" class="ion-margin-end report-icon">
+            <ion-label color="primary" class="VSmallBold">View activity report</ion-label>
+          </ion-row>
+        </ion-col>
+      </ion-row>
+
+    </div>
+  </div>
+</ion-content>
